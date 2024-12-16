@@ -1,0 +1,21 @@
+ul {
+  list-style: none;
+  flex-direction: column;
+}
+
+#listaFraldas {
+}
+
+#listaMimos {
+}
+
+.listaItem {
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: flex;
+}
