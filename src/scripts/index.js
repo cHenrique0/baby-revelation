@@ -39,6 +39,8 @@ const etapaAnterior = () => {
 
 const goToHome = () => {  
   if(etapaAtual === totalEtapas) {
+    window.location.reload()
+    
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAtual.classList.add("hidden");
     sessaoEtapaAtual.classList.remove("show");
