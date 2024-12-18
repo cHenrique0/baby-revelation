@@ -74,11 +74,13 @@ nextBtn.addEventListener("click", () => {
 
     actions.classList.add("show");
     actions.classList.remove("hidden");
+
+    window.location.reload()
   }
 })
 
 submitBtn.addEventListener("click", (event) => {
-
+  
   etapa++;
 
   if(etapa === 5) {
