@@ -37,7 +37,7 @@ const etapaAnterior = () => {
   }
 }
 
-const goToHome = () => {
+const goToHome = () => {  
   if(etapaAtual === totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAtual.classList.add("hidden");
