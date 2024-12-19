@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./src/styles/header.css" />
   <link rel="stylesheet" href="./src/styles/actions.css" />
-  <link rel="stylesheet" href="./src/styles/infos.css" />
+  <link rel="stylesheet" href="./src/styles/elements.css" />
   <link rel="stylesheet" href="./src/styles/listas.css" />
   <link rel="stylesheet" href="./src/styles/loading.css" />
   <script src="./src/scripts/index.js" defer></script>
@@ -27,8 +27,8 @@
       <p>hora</p>
     </div>
     <div id="etapa0" class="show">
-      <button id="confirmarPresenca" class="btn btn-success" onclick="proximaEtapa()">Confirmar Presença</button>
-      <button id="local" class="btn btn-danger">Localização</button>
+      <button id="confirmarPresenca" class="" onclick="proximaEtapa()">Confirmar Presença</button>
+      <button id="local" class="">Localização</button>
     </div>
     <form id="confirm-form" method="POST" action="">
       <section id="etapa1" class="hidden">
@@ -38,27 +38,29 @@
           <input type="text" name="nomeConvidado" id="nomeConvidado" placeholder="Quem vai?">
         </div>
         <div class="buttons">
-          <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="btn btn-success" onclick="proximaEtapa()">Próximo</button>
+          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
+          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
         </div>
       </section>
       <section id="etapa2" class="hidden">
         <div class="pulse" id="loadingEtapa2"></div>
         <h4>Etapa 2</h4>
-        <ul id="listaFraldas" onchange="getItem(event)">
+        <p>Escolha o tamanho das fraldas</p>
+        <ul class="radio-button-container" id="listaFraldas" onchange="getItem(event)">
         </ul>
         <div class="buttons">
-          <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="btn btn-success" onclick="proximaEtapa()">Próximo</button>
+          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
+          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
         </div>
       </section>
       <section id="etapa3" class="hidden">
         <h4>Etapa 3</h4>
-        <ul id="listaMimos" onchange="getItem(event)">
+        <p>Escolha o mimo</p>
+        <ul class="radio-button-container" id="listaMimos" onchange="getItem(event)">
         </ul>
         <div class="buttons">
-          <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="btn btn-success" onclick="proximaEtapa()">Próximo</button>
+          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
+          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
         </div>
       </section>
       <section id="etapa4" class="hidden">
@@ -66,12 +68,12 @@
           <h4>Etapa 4</h4>
           <p>Confirmar os presentes selecionados</p>
           <p>Você escolheu</p>
-          <p id="fraldaEscolhida"></p>
+          <p>1 pacote de fraldas </p><p id="fraldaEscolhida"></p>
           <p id="mimoEscolhido"></p>
         </div>
         <div>
-          <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
-          <button id="submit" type="submit" onclick="proximaEtapa()" class="btn btn-success">Confirmar</button>
+          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
+          <button id="submit" type="submit" onclick="proximaEtapa()" class="">Confirmar</button>
         </div>
       </section>
   </form>
@@ -79,7 +81,7 @@
   <section id="etapa5" class="hidden">
     <h4>Etapa 5</h4>
     <p>Mensagem de agradecimento</p>
-    <button id="previous" class="btn btn-outline-success" onclick="goToHome()">Voltar para o início</button>
+    <button id="previous" class="" onclick="goToHome()">Voltar para o início</button>
   </section>
   </main>
 </body>

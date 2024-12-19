@@ -62,14 +62,19 @@ async function fetchData() {
             let li = document.createElement("li");
             let inputRadio = document.createElement("input");
             let label = document.createElement("label");
-            let inputID = createElementID(fralda.name);            
-            li.classList.add("itemLista");
+            let inputID = createElementID(fralda.name);     
+            let span = document.createElement("span");
+            li.classList.add("radio-button");
+            inputRadio.classList.add("radio-button__input");
+            label.classList.add("radio-button__label");
+            span.classList.add("radio-button__custom");
             inputRadio.setAttribute("type", "radio");
             inputRadio.setAttribute("id", inputID);
             inputRadio.setAttribute("name", category);
             inputRadio.setAttribute("value", fralda.name);
             label.setAttribute("for", inputID);
-            label.textContent = fralda.name;
+            label.appendChild(span);
+            label.innerHTML += fralda.name;
             li.appendChild(inputRadio);
             li.appendChild(label);
             ulFraldas.appendChild(li);
@@ -80,14 +85,19 @@ async function fetchData() {
             let li = document.createElement("li");
             let inputRadio = document.createElement("input");
             let label = document.createElement("label");
-            let inputID = createElementID(mimo.name);            
-            li.classList.add("itemLista");
+            let inputID = createElementID(mimo.name); 
+            let span = document.createElement("span");
+            li.classList.add("radio-button");
+            inputRadio.classList.add("radio-button__input");
+            label.classList.add("radio-button__label");
+            span.classList.add("radio-button__custom");
             inputRadio.setAttribute("type", "radio");
             inputRadio.setAttribute("id", inputID);
             inputRadio.setAttribute("name", category);
             inputRadio.setAttribute("value", mimo.name);
             label.setAttribute("for", inputID);
-            label.textContent = mimo.name;
+            label.appendChild(span);
+            label.innerHTML += mimo.name;
             li.appendChild(inputRadio);
             li.appendChild(label);
             ulMimos.appendChild(li);
@@ -102,3 +112,13 @@ async function fetchData() {
 
 // Inicia o carregamento ao carregar a página
 window.onload = fetchData;
+
+
+
+{/* <li class="radio-button">
+  <input type="radio" class="radio-button__input" id="radio1" name="radio-group">
+  <label class="radio-button__label" for="radio1">
+    <span class="radio-button__custom"></span>
+    React
+  </label>
+</li> */}
