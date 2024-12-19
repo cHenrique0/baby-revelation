@@ -1,4 +1,4 @@
-const baseUrl = "https://script.google.com/macros/s/AKfycbwMkQgejOcNsEO_rsPDSKzXddMIfznYuyBED9cQLaHzofQJGcRDf2L4tYL3aab1l4n-vA/exec";
+const baseUrl = "https://script.google.com/macros/s/AKfycbyuC9gR9Wv5t_Jc9e4oIL52YEeFCahxVtkxlwtX4uGF8u5bUzcPMxrY3lcwcNT6ai5Avw/exec";
 
 const form = document.forms["confirm-form"];
 const ulFraldas = document.getElementById("listaFraldas");
@@ -58,37 +58,46 @@ async function fetchData() {
   await fetch(`${baseUrl}?getAvailableProducts=true`)
     .then(res => res.json())
     .then(products => {
-      if(ulFraldas.children.length > 0 && ulMimos.children.length > 0) {
-        return;
-      }
-    
-      for (let i = 0; i < products.length; i++) {
-        const product = products[i];
-        const inputID = createElementID(product);
-        let li = document.createElement("li");
-        let inputRadio = document.createElement("input");
-        let label = document.createElement("label");
+      Object.keys(products).forEach((category) => {
+        const categories = products[category];
         
-        li.classList.add("itemLista");
-        inputRadio.setAttribute("type", "radio");
-        inputRadio.setAttribute("id", inputID);
-        inputRadio.setAttribute("value", product);
-        label.setAttribute("for", inputID);
-        label.textContent = product;
-        
-        if(i <= 4) {
-          inputRadio.setAttribute("name", "fralda");
-          li.appendChild(inputRadio);
-          li.appendChild(label);
-          ulFraldas.appendChild(li);
+        if (category === "fralda") {
+          categories.forEach((fralda) => {
+            let li = document.createElement("li");
+            let inputRadio = document.createElement("input");
+            let label = document.createElement("label");
+            let inputID = createElementID(fralda.name);            
+            li.classList.add("itemLista");
+            inputRadio.setAttribute("type", "radio");
+            inputRadio.setAttribute("id", inputID);
+            inputRadio.setAttribute("name", category);
+            inputRadio.setAttribute("value", fralda.name);
+            label.setAttribute("for", inputID);
+            label.textContent = fralda.name;
+            li.appendChild(inputRadio);
+            li.appendChild(label);
+            ulFraldas.appendChild(li);
+          })
         }
-        if(i > 4) {
-          inputRadio.setAttribute("name", "mimo");
-          li.appendChild(inputRadio);
-          li.appendChild(label);
-          ulMimos.appendChild(li);
+        if (category === "mimo") {
+          categories.forEach((mimo) => {
+            let li = document.createElement("li");
+            let inputRadio = document.createElement("input");
+            let label = document.createElement("label");
+            let inputID = createElementID(mimo.name);            
+            li.classList.add("itemLista");
+            inputRadio.setAttribute("type", "radio");
+            inputRadio.setAttribute("id", inputID);
+            inputRadio.setAttribute("name", category);
+            inputRadio.setAttribute("value", mimo.name);
+            label.setAttribute("for", inputID);
+            label.textContent = mimo.name;
+            li.appendChild(inputRadio);
+            li.appendChild(label);
+            ulMimos.appendChild(li);
+          })
         }
-      }
+      })
     })
     .then(() => {
       hideLoading(2);
