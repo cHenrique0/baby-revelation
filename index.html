@@ -45,7 +45,7 @@
       <section id="etapa2" class="hidden">
         <div class="pulse" id="loadingEtapa2"></div>
         <h4>Etapa 2</h4>
-        <ul id="listaFraldas">
+        <ul id="listaFraldas" onchange="getItem(event)">
         </ul>
         <div class="buttons">
           <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
@@ -54,7 +54,7 @@
       </section>
       <section id="etapa3" class="hidden">
         <h4>Etapa 3</h4>
-        <ul id="listaMimos">
+        <ul id="listaMimos" onchange="getItem(event)">
         </ul>
         <div class="buttons">
           <button id="previous" type="button" class="btn btn-outline-success" onclick="etapaAnterior()">Voltar</button>
@@ -65,6 +65,7 @@
         <div>
           <h4>Etapa 4</h4>
           <p>Confirmar os presentes selecionados</p>
+          <p>Você escolheu</p>
           <p id="fraldaEscolhida"></p>
           <p id="mimoEscolhido"></p>
         </div>

@@ -6,6 +6,12 @@ const formControlBox = document.getElementById("formControlBox");
 const submitBtn = document.getElementById("submit");
 const inputIDConvite = document.getElementById("idConvite");
 const inputConvidado = document.getElementById("nomeConvidado");
+const fraldaEscolhida = document.getElementById("fraldaEscolhida");
+const mimoEscolhido = document.getElementById("mimoEscolhido");
+const ulFraldas = document.getElementById("listaFraldas");
+const ulMimos = document.getElementById("listaMimos");
+const loadingEtapa2 = document.getElementById("loadingEtapa2");
+const loadingEtapa5 = document.getElementById("loadingEtapa5");
 
 inputConvidado.value = "";
 inputIDConvite.value = "";
@@ -30,10 +36,26 @@ inputIDConvite.oninput = (event) => {
   }
 }
 
+const getItem = (event) => {
+  if (event.target.type === "radio") {
+    if(event.target.name === "fralda") {
+      fraldaEscolhida.innerText = event.target.value;
+    }
+    if(event.target.name === "mimo") {
+      mimoEscolhido.innerText = event.target.value;
+    }
+  }
+};
+
 let etapaAtual = 0;
 let totalEtapas = 5;
 
 const proximaEtapa = () => {
+
+  if(etapaAtual === 1 && (!inputIDConvite.value || !inputConvidado.value)) {
+    alert("TESTE")
+    return;
+  }
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
