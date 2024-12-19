@@ -45,7 +45,10 @@ form.addEventListener("submit", async (event) => {
   showLoading(5);
 
   await fetch(baseUrl, { method: "POST", body: new FormData(form) })
-    .then((res) => { hideLoading(5); })
+    .then((res) => { 
+      hideLoading(5);
+      mostrarEtapa5();
+    })
     .catch((error) => { console.error("Erro", error.message) });
 })
 

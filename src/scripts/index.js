@@ -17,9 +17,11 @@ const proximaEtapa = () => {
     
     etapaAtual++;
     
-    let sessaoProximaEtapa = document.getElementById("etapa" + etapaAtual);
-    sessaoProximaEtapa.classList.remove("hidden");
-    sessaoProximaEtapa.classList.add("show");
+    if(etapaAtual != totalEtapas) {
+      let sessaoProximaEtapa = document.getElementById("etapa" + etapaAtual);
+      sessaoProximaEtapa.classList.remove("hidden");
+      sessaoProximaEtapa.classList.add("show");
+    }
   }
 }
 
@@ -37,9 +39,9 @@ const etapaAnterior = () => {
   }
 }
 
-const goToHome = () => {  
+const goToHome = () => {
   if(etapaAtual === totalEtapas) {
-    window.location.reload()
+    window.location.reload();
     
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAtual.classList.add("hidden");
@@ -51,4 +53,10 @@ const goToHome = () => {
     sessaoProximaEtapa.classList.remove("hidden");
     sessaoProximaEtapa.classList.add("show");
   }
+}
+
+const mostrarEtapa5 = () => {
+  let etapa5 = document.getElementById("etapa5");
+  etapa5.classList.remove("hidden");
+  etapa5.classList.add("show");
 }
