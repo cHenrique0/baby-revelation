@@ -39,20 +39,20 @@ function hideLoading(etapa) {
   }
 }
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
   
   showLoading(5);
 
-  fetch(baseUrl, { method: "POST", body: new FormData(form) })
+  await fetch(baseUrl, { method: "POST", body: new FormData(form) })
     .then((res) => { hideLoading(5); })
     .catch((error) => { console.error("Erro", error.message) });
 })
 
-function fetchData() {
+async function fetchData() {
   showLoading(2);
 
-  fetch(`${baseUrl}?getAvailableProducts=true`)
+  await fetch(`${baseUrl}?getAvailableProducts=true`)
     .then(res => res.json())
     .then(products => {
       if(ulFraldas.children.length > 0 && ulMimos.children.length > 0) {
