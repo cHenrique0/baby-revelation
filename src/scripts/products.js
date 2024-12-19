@@ -3,6 +3,8 @@ const baseUrl = "https://script.google.com/macros/s/AKfycbwMkQgejOcNsEO_rsPDSKzX
 const form = document.forms["confirm-form"];
 const ulFraldas = document.getElementById("listaFraldas");
 const ulMimos = document.getElementById("listaMimos");
+const loadingEtapa2 = document.getElementById("loadingEtapa2");
+const loadingEtapa5 = document.getElementById("loadingEtapa5");
 
 const createElementID = (string) => {
   // Remove acentos e caracteres especiais
@@ -19,50 +21,76 @@ const createElementID = (string) => {
   return camelCase;
 }
 
+function showLoading(etapa) {
+  if(etapa === 2) {
+    loadingEtapa2.style.display = 'flex';
+  }
+  if(etapa === 5) {
+    loadingEtapa5.style.display = 'flex';
+  }
+}
+
+function hideLoading(etapa) {
+  if(etapa === 2) {
+    loadingEtapa2.style.display = 'none';
+  }
+  if(etapa === 5) {
+    loadingEtapa5.style.display = 'none';
+  }
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   
+  showLoading(5);
+
   fetch(baseUrl, { method: "POST", body: new FormData(form) })
-    // .then((res) => { alert("OBRIGADO") })
+    .then((res) => { hideLoading(5); })
     .catch((error) => { console.error("Erro", error.message) });
 })
 
-confirmarBtn.addEventListener("click", () => {
-  fetch(`${baseUrl}?getAvailableProducts=true`)
-  .then(res => res.json())
-  .then(products => {
+function fetchData() {
+  showLoading(2);
 
-    if(ulFraldas.children.length > 0 && ulMimos.children.length > 0) {
-      console.log("Dentro do if");
-      return;
-    }
+  fetch(`${baseUrl}?getAvailableProducts=true`)
+    .then(res => res.json())
+    .then(products => {
+      if(ulFraldas.children.length > 0 && ulMimos.children.length > 0) {
+        return;
+      }
     
-    for (let i = 0; i < products.length; i++) {
-      const product = products[i];
-      const inputID = createElementID(product);
-      let li = document.createElement("li");
-      let inputRadio = document.createElement("input");
-      let label = document.createElement("label");
-      
-      li.classList.add("itemLista");
-      inputRadio.setAttribute("type", "radio");
-      inputRadio.setAttribute("id", inputID);
-      inputRadio.setAttribute("value", product);
-      label.setAttribute("for", inputID);
-      label.textContent = product;
-      
-      if(i <= 4) {
-        inputRadio.setAttribute("name", "fralda");
-        li.appendChild(inputRadio);
-        li.appendChild(label);
-        ulFraldas.appendChild(li);
+      for (let i = 0; i < products.length; i++) {
+        const product = products[i];
+        const inputID = createElementID(product);
+        let li = document.createElement("li");
+        let inputRadio = document.createElement("input");
+        let label = document.createElement("label");
+        
+        li.classList.add("itemLista");
+        inputRadio.setAttribute("type", "radio");
+        inputRadio.setAttribute("id", inputID);
+        inputRadio.setAttribute("value", product);
+        label.setAttribute("for", inputID);
+        label.textContent = product;
+        
+        if(i <= 4) {
+          inputRadio.setAttribute("name", "fralda");
+          li.appendChild(inputRadio);
+          li.appendChild(label);
+          ulFraldas.appendChild(li);
+        }
+        if(i > 4) {
+          inputRadio.setAttribute("name", "mimo");
+          li.appendChild(inputRadio);
+          li.appendChild(label);
+          ulMimos.appendChild(li);
+        }
       }
-      if(i > 4) {
-        inputRadio.setAttribute("name", "mimo");
-        li.appendChild(inputRadio);
-        li.appendChild(label);
-        ulMimos.appendChild(li);
-      }
-    }
-  })
-})
+    })
+    .then(() => {
+      hideLoading(2);
+    });
+}
+
+// Inicia o carregamento ao carregar a página
+window.onload = fetchData;
