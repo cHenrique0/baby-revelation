@@ -1,6 +1,12 @@
+.loading-container {
+  height: 80vh;
+  justify-content: center;
+  align-items: center;
+}
+
 .pulse {
-  width: 56px;
-  height: 56px;
+  width: 128px;
+  height: 128px;
   color: #a547ff;
   background: radial-gradient(circle at 60% 65%, currentColor 62%, #0000 65%) top left,
         radial-gradient(circle at 40% 65%, currentColor 62%, #0000 65%) top right,

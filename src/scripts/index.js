@@ -40,22 +40,40 @@ const getItem = (event) => {
   if (event.target.type === "radio") {
     if(event.target.name === "fralda") {
       fraldaEscolhida.innerText = event.target.value;
+      return event.target.value;
     }
     if(event.target.name === "mimo") {
       mimoEscolhido.innerText = event.target.value;
+      return event.target.value;
     }
   }
 };
 
-let etapaAtual = 0;
+const isRadioSelected = () => {}
+
+const validarInputs = () => {
+  if(etapaAtual === 1 && (!inputIDConvite.value || !inputConvidado.value)) {
+    alert("Preencha os campos")
+    return false;
+  }
+  // if(etapaAtual === 2 && ) {
+  //   alert("Preencha os campos")
+  //   return false;
+  // }
+  // if(etapaAtual === 3 && (!inputIDConvite.value || !inputConvidado.value)) {
+  //   alert("Preencha os campos")
+  //   return false;
+  // }
+
+  return true;
+};
+
+let etapaAtual = 1;
 let totalEtapas = 5;
 
-const proximaEtapa = () => {
-
-  if(etapaAtual === 1 && (!inputIDConvite.value || !inputConvidado.value)) {
-    alert("TESTE")
-    return;
-  }
+const proximaEtapa = () => {  
+  
+  // if(!validarInputs()) return;
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);

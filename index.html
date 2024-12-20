@@ -3,86 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/styles/header.css" />
-  <link rel="stylesheet" href="./src/styles/actions.css" />
-  <link rel="stylesheet" href="./src/styles/elements.css" />
+  <link rel="stylesheet" href="./src/styles/index.css" />
+  <link rel="stylesheet" href="./src/styles/radio.css" />
   <link rel="stylesheet" href="./src/styles/listas.css" />
   <link rel="stylesheet" href="./src/styles/loading.css" />
-  <script src="./src/scripts/index.js" defer></script>
-  <script src="./src/scripts/products.js" defer></script>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <title>Document</title>
+  <title>Início - Chá Revelação</title>
 </head>
-<body>
-  <header>
-    <h1>Chá Revelação</h1>
-    <p>Asafe ou Ana Cecília?</p>
-    <p>Venha descobrir com a gente!</p>
-  </header>
-  <main>
-    <div id="infos">
-      <p>data</p>
-      <p>local</p>
-      <p>hora</p>
+<body class="body">
+  <div class="mainBackground">
+    <header class="heading">
+      <h1>Chá Revelação</h1>
+      <p>Asafe ou Ana Cecília?</p>
+      <p>Venha descobrir com a gente!</p>
+    </header>
+    <div class="infos">
+      <span>11/04</span>
+      <span>Any Eventos</span>
+      <span>15:00h</span>
     </div>
-    <div id="etapa0" class="show">
-      <button id="confirmarPresenca" class="" onclick="proximaEtapa()">Confirmar Presença</button>
-      <button id="local" class="">Localização</button>
-    </div>
-    <form id="confirm-form" method="POST" action="">
-      <section id="etapa1" class="hidden">
-        <div id="infoConvidado">
-          <h4>Etapa 1</h4>
-          <input type="number" name="idConvite" id="idConvite" placeholder="Digite o número do convite">
-          <input type="text" name="nomeConvidado" id="nomeConvidado" placeholder="Quem vai?">
-        </div>
-        <div class="buttons">
-          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
-        </div>
-      </section>
-      <section id="etapa2" class="hidden">
-        <div class="pulse" id="loadingEtapa2"></div>
-        <h4>Etapa 2</h4>
-        <p>Escolha o tamanho das fraldas</p>
-        <ul class="radio-button-container" id="listaFraldas" onchange="getItem(event)">
-        </ul>
-        <div class="buttons">
-          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
-        </div>
-      </section>
-      <section id="etapa3" class="hidden">
-        <h4>Etapa 3</h4>
-        <p>Escolha o mimo</p>
-        <ul class="radio-button-container" id="listaMimos" onchange="getItem(event)">
-        </ul>
-        <div class="buttons">
-          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
-          <button id="next" type="button" class="" onclick="proximaEtapa()">Próximo</button>
-        </div>
-      </section>
-      <section id="etapa4" class="hidden">
-        <div>
-          <h4>Etapa 4</h4>
-          <p>Confirmar os presentes selecionados</p>
-          <p>Você escolheu</p>
-          <p>1 pacote de fraldas </p><p id="fraldaEscolhida"></p>
-          <p id="mimoEscolhido"></p>
-        </div>
-        <div>
-          <button id="previous" type="button" class="" onclick="etapaAnterior()">Voltar</button>
-          <button id="submit" type="submit" onclick="proximaEtapa()" class="">Confirmar</button>
-        </div>
-      </section>
-  </form>
-  <div class="pulse hidden" id="loadingEtapa5"></div>
-  <section id="etapa5" class="hidden">
-    <h4>Etapa 5</h4>
-    <p>Mensagem de agradecimento</p>
-    <button id="previous" class="" onclick="goToHome()">Voltar para o início</button>
-  </section>
-  </main>
+    <section id="etapa0">
+      <a href="./src/pages/form.html" class="button" id="confirmarPresenca">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+        <!-- <span class="label">Confirmar Presença</span> -->
+        Confirmar Presença
+      </a>
+      <button id="local" type="button" class="button">
+        <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+        <!-- <span class="label">Localização</span> -->
+        Localização
+      </button>
+    </section>
+  </div>
 </body>
 </html>
