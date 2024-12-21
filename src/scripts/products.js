@@ -58,7 +58,7 @@ async function fetchData() {
         const categories = products[category];
         
         if (category === "fralda") {
-          categories.forEach((fralda) => {
+          categories.forEach((fralda, index) => {
             let li = document.createElement("li");
             let inputRadio = document.createElement("input");
             let label = document.createElement("label");
@@ -75,6 +75,11 @@ async function fetchData() {
             label.setAttribute("for", inputID);
             label.appendChild(span);
             label.innerHTML += fralda.name;
+            
+            if(index === 0) {
+              inputRadio.required = true;
+            }
+            
             li.appendChild(inputRadio);
             li.appendChild(label);
             ulFraldas.appendChild(li);

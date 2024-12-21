@@ -12,10 +12,13 @@ const ulFraldas = document.getElementById("listaFraldas");
 const ulMimos = document.getElementById("listaMimos");
 const loadingEtapa2 = document.getElementById("loadingEtapa2");
 const loadingEtapa5 = document.getElementById("loadingEtapa5");
+const etapas = document.querySelectorAll(".etapa");
+
+const totalEtapas = 5;
+let etapaAtual = 1;
 
 inputConvidado.value = "";
 inputIDConvite.value = "";
-
 
 inputIDConvite.addEventListener("keydown", function (event) {
   // Permitir: teclas de controle (Backspace, Delete, Tab, etc.)
@@ -40,40 +43,36 @@ const getItem = (event) => {
   if (event.target.type === "radio") {
     if(event.target.name === "fralda") {
       fraldaEscolhida.innerText = event.target.value;
-      return event.target.value;
     }
     if(event.target.name === "mimo") {
       mimoEscolhido.innerText = event.target.value;
-      return event.target.value;
     }
   }
 };
 
-const isRadioSelected = () => {}
-
-const validarInputs = () => {
-  if(etapaAtual === 1 && (!inputIDConvite.value || !inputConvidado.value)) {
-    alert("Preencha os campos")
-    return false;
+const validarEtapas = (etapaIndex) => {  
+  const etapa = etapas[etapaIndex];
+  const inputsObrigatorios = etapa.querySelectorAll('[required]');
+  
+  for (let input of inputsObrigatorios) {
+    if (!input.checkValidity()) {
+      return false;
+    }
   }
-  // if(etapaAtual === 2 && ) {
-  //   alert("Preencha os campos")
-  //   return false;
-  // }
-  // if(etapaAtual === 3 && (!inputIDConvite.value || !inputConvidado.value)) {
-  //   alert("Preencha os campos")
-  //   return false;
-  // }
-
   return true;
 };
 
-let etapaAtual = 1;
-let totalEtapas = 5;
-
 const proximaEtapa = () => {  
   
-  // if(!validarInputs()) return;
+  if(!validarEtapas(etapaAtual)) {
+    if(etapaAtual === 1) {
+      alert("PREENCHA OS CAMPOS")
+    }
+    if(etapaAtual === 2) {
+      alert("Por favor, escolha uma opção de fralda!")
+    }
+    return;
+  };
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
@@ -91,7 +90,7 @@ const proximaEtapa = () => {
 }
 
 const etapaAnterior = () => {
-  if(etapaAtual > 0) {
+  if(etapaAtual > 1) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAtual.classList.add("hidden");
     sessaoEtapaAtual.classList.remove("show");
@@ -101,22 +100,6 @@ const etapaAnterior = () => {
     let sessaoEtapaAnterior = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAnterior.classList.remove("hidden");
     sessaoEtapaAnterior.classList.add("show");
-  }
-}
-
-const goToHome = () => {
-  if(etapaAtual === totalEtapas) {
-    window.location.reload();
-    
-    let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
-    sessaoEtapaAtual.classList.add("hidden");
-    sessaoEtapaAtual.classList.remove("show");
-    
-    etapaAtual = 0;
-    
-    let sessaoProximaEtapa = document.getElementById("etapa" + etapaAtual);
-    sessaoProximaEtapa.classList.remove("hidden");
-    sessaoProximaEtapa.classList.add("show");
   }
 }
 
