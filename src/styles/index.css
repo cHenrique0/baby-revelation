@@ -40,19 +40,6 @@
   text-shadow: inset -1px -1px 1px #DAA06D;
 }
 
-.input {
-  outline: none;
-  padding: 0.5em;
-  border: 1px solid #DAA06D;
-  color: #DAA06D;
-  width: 14em;
-  height: 3em;
-  font-weight: 600;
-  border-radius: 10px;
-  background-color: #EADDCA;
-  text-align: center;
-}
-
 .button {
   border-radius: 10px;
   outline: none;
