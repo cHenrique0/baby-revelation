@@ -13,15 +13,11 @@ const createElementID = (string) => {
   return camelCase;
 }
 
-function showLoading(etapa) {
-  console.log('showLoading');
-  
+function showLoading(etapa) {  
   if(etapa === 2) {
     loadingEtapa2.style.display = 'flex';
   }
-  if(etapa === 4) {
-    console.log('showLoading 4');
-    
+  if(etapa === 4) {    
     loadingEtapa4.style.display = 'flex';
   }
 }

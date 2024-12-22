@@ -62,10 +62,13 @@
   color: #b87337 !important;
 }
 
+.invalid-feedback {
+  text-align: left;
+}
+
 .invalid {
-  justify-content: center;
   color: #dc3545;
-  font-size: 134x;
+  font-size: 14px;
 }
 
 .lista-container {

@@ -24,10 +24,11 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 3em 2em 2em 2.1em;
+  margin: 0.8em;
   border: 4px dashed #DAA06D;
   border-radius: 15px;
   background-color: #EADDCA;
-  box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  /* box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5); */
   transition: .4s ease-in-out;
 }
 

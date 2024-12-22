@@ -94,6 +94,9 @@ const proximaEtapa = async () => {
       inputIDConvite.parentElement.classList.add("is-invalid");
       return;
     }
+
+    labelNomeConvidadoEtapa2.innerText = inputConvidado.value;
+    labelNomeConvidadoEtapa4.innerText = inputConvidado.value;
   }
 
   if(etapaAtual < totalEtapas) {

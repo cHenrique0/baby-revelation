@@ -17,9 +17,6 @@
 </head>
 <body class="body">
   <div class="mainBackground">
-    <!-- <div class="loading-container hidden" id="loadingEtapa5">
-      <div class="pulse"></div>
-    </div> -->
     <section id="etapa5" class="etapa hidden">
       <h4>Etapa 5</h4>
       <p>Mensagem de agradecimento</p>
@@ -34,7 +31,7 @@
     <form class="form" id="confirm-form" method="POST" action="">
       <section id="etapa1" class="etapa show">
         <h4>Informações do convidado</h4>
-        <p>Digite as informações do usuário</p>
+        <p>Digite as informações do convidado</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="input-group has-validation">
           <div class="form-floating" id="id-convite-container">
@@ -68,7 +65,7 @@
       </section>
       <section id="etapa2" class="etapa hidden">
         <h4>Fraldas</h4>
-        <p>É hora de escolher o tamanho das fraldas</p>
+        <p>Olá, <span id="label-nome-convidado-etapa-2"></span>! É hora de escolher o tamanho das fraldas</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="lista-container">
           <ul class="radio-button-container lista" id="listaFraldas" onchange="getItem(event)">
@@ -108,10 +105,10 @@
       <section id="etapa4" class="etapa hidden">
         <div>
           <h4>Etapa 4</h4>
-          <p>Confirmar os presentes selecionados</p>
-          <p>Você escolheu</p>
+          <p><span id="label-nome-convidado-etapa-4"></span>, você escolheu os presente abaixo:</p>
           <p id="fraldaEscolhida"></p>
           <p id="mimoEscolhido"></p>
+          <p>Deseja confirmar os presentes selecionados?</p>
         </div>
         <div class="buttons">
           <button id="previous" type="button" class="button" onclick="etapaAnterior()">

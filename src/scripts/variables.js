@@ -18,6 +18,8 @@ const loadingEtapa4 = document.getElementById("loadingEtapa4");
 const etapas = document.querySelectorAll(".etapa");
 const invalidMsg = document.getElementById("invalid-msg");
 const idInvalidMsg = document.getElementById("id-invalid-msg");
+const labelNomeConvidadoEtapa2 = document.getElementById("label-nome-convidado-etapa-2");
+const labelNomeConvidadoEtapa4 = document.getElementById("label-nome-convidado-etapa-4");
 
 const form = document.forms["confirm-form"];
 const baseUrl = "https://script.google.com/macros/s/AKfycbwn6uSiwUBc7g1ZXyxnzdIuztG-ENnZMbMuIrNCepqTrzZ3k2wkAvHdA7Ls_rijNlJPPQ/exec";
