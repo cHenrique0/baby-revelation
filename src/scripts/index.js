@@ -1,22 +1,3 @@
-const confirmarBtn = document.getElementById("confirmarPresenca");
-const actions = document.getElementById("actions");
-const nextBtn = document.getElementById("next");
-const previous = document.getElementById("previous");
-const formControlBox = document.getElementById("formControlBox");
-const submitBtn = document.getElementById("submit");
-const inputIDConvite = document.getElementById("idConvite");
-const inputConvidado = document.getElementById("nomeConvidado");
-const divIDConvite = document.getElementById("id-convite-container");
-const divNomeConvidado = document.getElementById("nome-convidado-container");
-const fraldaEscolhida = document.getElementById("fraldaEscolhida");
-const mimoEscolhido = document.getElementById("mimoEscolhido");
-const ulFraldas = document.getElementById("listaFraldas");
-const ulMimos = document.getElementById("listaMimos");
-const loadingEtapa2 = document.getElementById("loadingEtapa2");
-const loadingEtapa5 = document.getElementById("loadingEtapa5");
-const etapas = document.querySelectorAll(".etapa");
-const invalidMsg = document.getElementById("invalid-msg");
-
 const totalEtapas = 5;
 let etapaAtual = 1;
 
@@ -72,21 +53,42 @@ const validarEtapas = (etapaIndex) => {
   
   for (let input of inputsObrigatorios) {
     if (!input.checkValidity()) {
-      input.classList.add("is-invalid");
-      input.parentElement.classList.add("is-invalid");
-      if(etapaIndex === 2) {
-        invalidMsg.classList.remove("hidden");
-        invalidMsg.classList.add("show");
-      }
-      return false;
+      return { "valid": false, "input": input };
     }
   }
-  return true;
+  return { "valid": true };
 };
 
-const proximaEtapa = () => {  
+const validarIDConvidado = async (idConvidado) => {
+  const guests = await fetch(`${baseUrl}?getGuests=true`).then(res => res.json()).then(guests => { return guests });
+  const guest = guests.find(guest => guest.id == idConvidado);
+  if(!guest) {
+    return false;
+  }
+  return true;
+}
+
+const proximaEtapa = async () => {  
   
-  if(!validarEtapas(etapaAtual)) return;
+  const isEtapaValida = validarEtapas(etapaAtual);  
+  if(!isEtapaValida.valid) {
+    idInvalidMsg.innerText = "Por favor, digite o número do convite que você recebeu.";
+    isEtapaValida.input.classList.add("is-invalid");
+    isEtapaValida.input.parentElement.classList.add("is-invalid");
+    if(etapaAtual === 2) {
+      invalidMsg.classList.remove("hidden");
+      invalidMsg.classList.add("show");
+    }
+    return;
+  };
+
+  const isIdValid = await validarIDConvidado(inputIDConvite.value);
+  if(!isIdValid) {
+    idInvalidMsg.innerText = "ID de convite inválido.";
+    inputIDConvite.classList.add("is-invalid");
+    inputIDConvite.parentElement.classList.add("is-invalid");
+    return;
+  }
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);

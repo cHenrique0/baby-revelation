@@ -1,7 +1,3 @@
-const baseUrl = "https://script.google.com/macros/s/AKfycbyuC9gR9Wv5t_Jc9e4oIL52YEeFCahxVtkxlwtX4uGF8u5bUzcPMxrY3lcwcNT6ai5Avw/exec";
-
-const form = document.forms["confirm-form"];
-
 const createElementID = (string) => {
   // Remove acentos e caracteres especiais
   const noAccents = string.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
