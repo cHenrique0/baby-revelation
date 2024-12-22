@@ -5,6 +5,7 @@
   align-items: flex-start;
   list-style: none;
   gap: 10px;
+  padding: 0;
 }
 
 .radio-button {
@@ -59,6 +60,10 @@
   transform: scale(1.2);
   border-color: #5546E7;
   box-shadow: 0 0 20px #4D3273;
+}
+
+.radio-button__label:hover {
+  color: #5546E7;
 }
 
 
