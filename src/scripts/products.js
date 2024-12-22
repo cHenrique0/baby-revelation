@@ -14,11 +14,15 @@ const createElementID = (string) => {
 }
 
 function showLoading(etapa) {
+  console.log('showLoading');
+  
   if(etapa === 2) {
     loadingEtapa2.style.display = 'flex';
   }
-  if(etapa === 5) {
-    loadingEtapa5.style.display = 'flex';
+  if(etapa === 4) {
+    console.log('showLoading 4');
+    
+    loadingEtapa4.style.display = 'flex';
   }
 }
 
@@ -26,20 +30,19 @@ function hideLoading(etapa) {
   if(etapa === 2) {
     loadingEtapa2.style.display = 'none';
   }
-  if(etapa === 5) {
-    loadingEtapa5.style.display = 'none';
+  if(etapa === 4) {
+    loadingEtapa4.style.display = 'none';
   }
 }
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   
-  showLoading(5);
+  showLoading(4);
 
   await fetch(baseUrl, { method: "POST", body: new FormData(form) })
     .then((res) => { 
-      hideLoading(5);
-      mostrarEtapa5();
+      hideLoading(4);
     })
     .catch((error) => { console.error("Erro", error.message) });
 })

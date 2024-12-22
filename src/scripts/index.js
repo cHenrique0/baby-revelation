@@ -83,7 +83,6 @@ const proximaEtapa = async () => {
   };
 
   if(etapaAtual === 1) {
-    console.log("VALIDANDO O ID")
     loadingEtapa1.classList.remove("hidden");
     loadingEtapa1.classList.add("show");
     const isIdValid = await validarIDConvidado(inputIDConvite.value);
@@ -99,16 +98,21 @@ const proximaEtapa = async () => {
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);
+    
+    if (etapaAtual === 4) {
+      sessaoEtapaAtual.classList.remove("hidden");
+      sessaoEtapaAtual.classList.add("show");
+      await fetchData();
+    }
+
     sessaoEtapaAtual.classList.add("hidden");
     sessaoEtapaAtual.classList.remove("show");
     
     etapaAtual++;
     
-    if(etapaAtual != totalEtapas) {
-      let sessaoProximaEtapa = document.getElementById("etapa" + etapaAtual);
-      sessaoProximaEtapa.classList.remove("hidden");
-      sessaoProximaEtapa.classList.add("show");
-    }
+    let sessaoProximaEtapa = document.getElementById("etapa" + etapaAtual);
+    sessaoProximaEtapa.classList.remove("hidden");
+    sessaoProximaEtapa.classList.add("show");
   }
 }
 
@@ -124,10 +128,4 @@ const etapaAnterior = () => {
     sessaoEtapaAnterior.classList.remove("hidden");
     sessaoEtapaAnterior.classList.add("show");
   }
-}
-
-const mostrarEtapa5 = () => {
-  let etapa5 = document.getElementById("etapa5");
-  etapa5.classList.remove("hidden");
-  etapa5.classList.add("show");
 }
