@@ -12,6 +12,7 @@ const fraldaEscolhida = document.getElementById("fraldaEscolhida");
 const mimoEscolhido = document.getElementById("mimoEscolhido");
 const ulFraldas = document.getElementById("listaFraldas");
 const ulMimos = document.getElementById("listaMimos");
+const loadingEtapa1 = document.getElementById("loadingEtapa1");
 const loadingEtapa2 = document.getElementById("loadingEtapa2");
 const loadingEtapa5 = document.getElementById("loadingEtapa5");
 const etapas = document.querySelectorAll(".etapa");

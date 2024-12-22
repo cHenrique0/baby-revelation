@@ -1,5 +1,6 @@
 const totalEtapas = 5;
 let etapaAtual = 1;
+let idGuestValidated = false;
 
 inputConvidado.value = "";
 inputIDConvite.value = "";
@@ -82,12 +83,20 @@ const proximaEtapa = async () => {
     return;
   };
 
-  const isIdValid = await validarIDConvidado(inputIDConvite.value);
-  if(!isIdValid) {
-    idInvalidMsg.innerText = "Número do convite inválido.";
-    inputIDConvite.classList.add("is-invalid");
-    inputIDConvite.parentElement.classList.add("is-invalid");
-    return;
+  if(!idGuestValidated) {
+    console.log("VALIDANDO O ID")
+    loadingEtapa1.classList.remove("hidden");
+    loadingEtapa1.classList.add("show");
+    const isIdValid = await validarIDConvidado(inputIDConvite.value);
+    loadingEtapa1.classList.remove("show");
+    loadingEtapa1.classList.add("hidden");
+    if(!isIdValid) {
+      idInvalidMsg.innerText = "Número do convite inválido.";
+      inputIDConvite.classList.add("is-invalid");
+      inputIDConvite.parentElement.classList.add("is-invalid");
+      return;
+    }
+    idGuestValidated = true;
   }
 
   if(etapaAtual < totalEtapas) {
