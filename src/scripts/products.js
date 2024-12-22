@@ -117,13 +117,3 @@ async function fetchData() {
 
 // Inicia o carregamento ao carregar a página
 window.onload = fetchData;
-
-
-
-{/* <li class="radio-button">
-  <input type="radio" class="radio-button__input" id="radio1" name="radio-group">
-  <label class="radio-button__label" for="radio1">
-    <span class="radio-button__custom"></span>
-    React
-  </label>
-</li> */}

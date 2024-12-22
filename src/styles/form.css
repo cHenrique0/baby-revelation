@@ -58,3 +58,17 @@
   font-size: 12px;
   color: #b87337 !important;
 }
+
+.invalid {
+  justify-content: center;
+  color: #dc3545;
+  font-size: 134x;
+}
+
+.lista-container {
+  width: 100%;
+}
+
+.lista {
+  border: 1px solid red;
+}

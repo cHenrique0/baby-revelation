@@ -6,6 +6,8 @@ const formControlBox = document.getElementById("formControlBox");
 const submitBtn = document.getElementById("submit");
 const inputIDConvite = document.getElementById("idConvite");
 const inputConvidado = document.getElementById("nomeConvidado");
+const divIDConvite = document.getElementById("id-convite-container");
+const divNomeConvidado = document.getElementById("nome-convidado-container");
 const fraldaEscolhida = document.getElementById("fraldaEscolhida");
 const mimoEscolhido = document.getElementById("mimoEscolhido");
 const ulFraldas = document.getElementById("listaFraldas");
@@ -13,6 +15,7 @@ const ulMimos = document.getElementById("listaMimos");
 const loadingEtapa2 = document.getElementById("loadingEtapa2");
 const loadingEtapa5 = document.getElementById("loadingEtapa5");
 const etapas = document.querySelectorAll(".etapa");
+const invalidMsg = document.getElementById("invalid-msg");
 
 const totalEtapas = 5;
 let etapaAtual = 1;
@@ -34,13 +37,26 @@ inputIDConvite.addEventListener("keydown", function (event) {
 });
 
 inputIDConvite.oninput = (event) => {
+  if(inputIDConvite.classList.contains("is-invalid")) {
+    inputIDConvite.classList.remove("is-invalid");
+    inputIDConvite.parentElement.classList.remove("is-invalid");
+  }
   if(inputIDConvite.value.length > 4) {
     inputIDConvite.value = inputIDConvite.value.slice(0, 4);
   }
 }
 
+inputConvidado.oninput = (event) => {
+if(inputConvidado.classList.contains("is-invalid")) {
+    inputConvidado.classList.remove("is-invalid");
+    inputConvidado.parentElement.classList.remove("is-invalid");
+  }
+}
+
 const getItem = (event) => {
   if (event.target.type === "radio") {
+    invalidMsg.classList.remove("show");
+    invalidMsg.classList.add("hidden");
     if(event.target.name === "fralda") {
       fraldaEscolhida.innerText = event.target.value;
     }
@@ -56,6 +72,12 @@ const validarEtapas = (etapaIndex) => {
   
   for (let input of inputsObrigatorios) {
     if (!input.checkValidity()) {
+      input.classList.add("is-invalid");
+      input.parentElement.classList.add("is-invalid");
+      if(etapaIndex === 2) {
+        invalidMsg.classList.remove("hidden");
+        invalidMsg.classList.add("show");
+      }
       return false;
     }
   }
@@ -64,15 +86,7 @@ const validarEtapas = (etapaIndex) => {
 
 const proximaEtapa = () => {  
   
-  if(!validarEtapas(etapaAtual)) {
-    if(etapaAtual === 1) {
-      alert("PREENCHA OS CAMPOS")
-    }
-    if(etapaAtual === 2) {
-      alert("Por favor, escolha uma opção de fralda!")
-    }
-    return;
-  };
+  if(!validarEtapas(etapaAtual)) return;
 
   if(etapaAtual < totalEtapas) {
     let sessaoEtapaAtual = document.getElementById("etapa" + etapaAtual);

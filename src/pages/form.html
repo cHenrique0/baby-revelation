@@ -36,18 +36,18 @@
         <p>Digite as informações do usuário</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="input-group has-validation">
-          <div class="form-floating">
+          <div class="form-floating" id="id-convite-container">
             <input type="number" class="form-control input" name="idConvite" id="idConvite" placeholder="Digite o número do convite" required>
             <label for="idConvite">Digite o número do convite</label>
           </div>
           <div class="invalid-feedback">Por favor, digite o número do convite que você recebeu.</div>
         </div>
         <div class="input-group has-validation">
-          <div class="form-floating">
+          <div class="form-floating" id="nome-convidado-container">
             <input type="text" class="form-control input" name="nomeConvidado" id="nomeConvidado" placeholder="Quem vai?" required>
             <label for="nomeConvidado">Quem vai?</label>
           </div>
-          <div class="invalid-feedback">Por favor, digite o número do convite que você recebeu.</div>
+          <div class="invalid-feedback">Por favor, digite o nome do convidado.</div>
         </div>
         <div class="buttons">
           <a href="../../index.html" id="previous" type="button" class="button" onclick="etapaAnterior()">
@@ -67,7 +67,11 @@
         <p>É hora de escolher o tamanho das fraldas</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="pulse" id="loadingEtapa2"></div>
-        <ul class="radio-button-container" id="listaFraldas" onchange="getItem(event)"></ul>
+        <div class="lista-container">
+          <ul class="radio-button-container lista" id="listaFraldas" onchange="getItem(event)">
+          </ul>
+          <div id="invalid-msg" class="invalid hidden">Por favor, escolha uma opção de fraldas.</div>
+        </div>
         <div class="buttons">
           <button id="previous" type="button" class="button" onclick="etapaAnterior()">
             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
