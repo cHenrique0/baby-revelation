@@ -122,3 +122,10 @@ const mostrarEtapa5 = () => {
   etapa5.classList.remove("hidden");
   etapa5.classList.add("show");
 }
+
+document.getElementById('sendMessage').addEventListener('click', function () {
+  const phoneNumber = '5598987695266'; // Número do destinatário
+  const message = encodeURIComponent('Oi, papai e mamãe. Acabei de confirmar minha presença no chá de revelação! Vou levar 1 pacote de {fralda} e {mimo}. Nós vemos lá');
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${message}`;
+  window.open(whatsappURL, '_blank');
+});
