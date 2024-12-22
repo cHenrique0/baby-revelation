@@ -84,7 +84,7 @@ const proximaEtapa = async () => {
 
   const isIdValid = await validarIDConvidado(inputIDConvite.value);
   if(!isIdValid) {
-    idInvalidMsg.innerText = "ID de convite inválido.";
+    idInvalidMsg.innerText = "Número do convite inválido.";
     inputIDConvite.classList.add("is-invalid");
     inputIDConvite.parentElement.classList.add("is-invalid");
     return;
