@@ -68,6 +68,16 @@ const validarIDConvidado = async (idConvidado) => {
   return true;
 }
 
+const isGuestConfirmed = async (idConvidado) => {
+  
+  const guests = await fetch(`${baseUrl}?getConfirmedGuests=true`).then(res => res.json()).then(guests => { return guests });
+  const guest = guests.find(guest => guest.id == idConvidado);
+  if(guest) {
+    return true;
+  }
+  return false;
+}
+
 const proximaEtapa = async () => {
 
   const isEtapaValida = validarEtapas(etapaAtual);  
@@ -95,6 +105,22 @@ const proximaEtapa = async () => {
       return;
     }
 
+    labelNomeConvidadoEtapa2.innerText = inputConvidado.value;
+    labelNomeConvidadoEtapa4.innerText = inputConvidado.value;
+  }
+
+  if(etapaAtual === 1) {
+    loadingEtapa1.classList.remove("hidden");
+    loadingEtapa1.classList.add("show");
+    const isIdConfirmed = await isGuestConfirmed(inputIDConvite.value);
+    loadingEtapa1.classList.remove("show");
+    loadingEtapa1.classList.add("hidden");
+    if(isIdConfirmed) {
+      idInvalidMsg.innerText = `O convidado com ID ${inputIDConvite.value} já confirmou presença.`;
+      inputIDConvite.classList.add("is-invalid");
+      inputIDConvite.parentElement.classList.add("is-invalid");
+      return;
+    }
     labelNomeConvidadoEtapa2.innerText = inputConvidado.value;
     labelNomeConvidadoEtapa4.innerText = inputConvidado.value;
   }

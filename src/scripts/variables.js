@@ -22,4 +22,4 @@ const labelNomeConvidadoEtapa2 = document.getElementById("label-nome-convidado-e
 const labelNomeConvidadoEtapa4 = document.getElementById("label-nome-convidado-etapa-4");
 
 const form = document.forms["confirm-form"];
-const baseUrl = "https://script.google.com/macros/s/AKfycbwn6uSiwUBc7g1ZXyxnzdIuztG-ENnZMbMuIrNCepqTrzZ3k2wkAvHdA7Ls_rijNlJPPQ/exec";
+const baseUrl = "https://script.google.com/macros/s/AKfycbzNJnniv9MZlkatwh7TDk9pZA_E_Bwi-vlrWAnRfKIDL_OnwBXpTZV9ekhwWV_BKfhyDQ/exec";
