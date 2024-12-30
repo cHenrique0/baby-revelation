@@ -67,14 +67,14 @@ const validarEtapas = (etapa) => {
     let checked = checkboxes.some(checkbox => checkbox.checked);
     if(!checked) {
       return { "valid": false, "input": checkboxes[0] };
-    }        
+    }
   }
   if (etapa === 3) {
     let checkboxes = [...document.querySelectorAll('input[name="mimo"]')];
     let checked = checkboxes.some(checkbox => checkbox.checked);
     if(!checked) {
       return { "valid": false, "input": checkboxes[0] };
-    }  
+    }
   }
 
   return { "valid": true };
@@ -99,13 +99,50 @@ const isGuestConfirmed = async (idConvidado) => {
   return false;
 }
 
+// Selecionar no máximo 2 itens e desabilitar os itens não selecionados
+const maxTwoItems = () => {
+  let checkboxes = [];
+
+  if(etapaAtual === 2) {
+    checkboxes = document.querySelectorAll('input[name="fralda"]');
+  }
+  if(etapaAtual === 3) {
+    checkboxes = document.querySelectorAll('input[name="mimo"]');
+  }
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', () => {
+      let checkedCount = 0;
+      if(etapaAtual === 2) {
+        checkedCount = document.querySelectorAll('input[name="fralda"]:checked').length;
+      }
+      if(etapaAtual === 3) {
+        checkedCount = document.querySelectorAll('input[name="mimo"]:checked').length;
+      }
+
+      checkboxes.forEach(box => {
+        if (checkedCount >= 2 && !box.checked) {
+          box.disabled = true;
+          box.classList.add("disabled");
+          box.labels[1].classList.add("disabled");
+        } else {
+          box.disabled = false;          
+          box.labels[1].classList.remove("disabled");
+        }
+      });
+    });
+  });
+}
+
 const proximaEtapa = async () => {
 
   const isEtapaValida = validarEtapas(etapaAtual);  
   if(!isEtapaValida.valid) {
-    idInvalidMsg.innerText = "Por favor, digite o número do convite que você recebeu.";
-    isEtapaValida.input.classList.add("is-invalid");
-    isEtapaValida.input.parentElement.classList.add("is-invalid");
+    if(etapaAtual === 1) {
+      idInvalidMsg.innerText = "Por favor, digite o número do convite que você recebeu.";
+      isEtapaValida.input.classList.add("is-invalid");
+      isEtapaValida.input.parentElement.classList.add("is-invalid");
+    }
     if(etapaAtual === 2) {
       fraldaInvalidMsg.classList.remove("hidden");
       fraldaInvalidMsg.classList.add("show");
@@ -158,6 +195,9 @@ const proximaEtapa = async () => {
     sessaoProximaEtapa.classList.remove("hidden");
     sessaoProximaEtapa.classList.add("show");
   }
+
+  maxTwoItems();
+
 }
 
 const etapaAnterior = () => {

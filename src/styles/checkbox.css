@@ -109,6 +109,12 @@ input[type=number] {
 
 .checkbox-label {
   cursor: pointer;
+  color: #000;
+}
+
+.disabled {
+  color: #6c757d;
+  cursor: not-allowed;
 }
 
 input[type="checkbox"]:checked ~ .checkbox {
