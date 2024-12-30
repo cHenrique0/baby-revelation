@@ -36,7 +36,14 @@ form.addEventListener("submit", async (event) => {
   
   showLoading(4);
 
-  await fetch(baseUrl, { method: "POST", body: new FormData(form) })
+  const fraldas = Array.from(form.querySelectorAll('input[name="fralda"]:checked')).map(input => input.value);
+  const mimos = Array.from(form.querySelectorAll('input[name="mimo"]:checked')).map(input => input.value);
+  const formData = new FormData(form);
+  formData.append('fraldas', JSON.stringify(fraldas));
+  formData.append('mimos', JSON.stringify(mimos));
+  
+  
+  await fetch(baseUrl, { method: "POST", body: formData })
     .then((res) => { 
       hideLoading(4);
     })
@@ -55,51 +62,58 @@ async function fetchData() {
         if (category === "fralda") {
           categories.forEach((fralda, index) => {
             let li = document.createElement("li");
-            let inputRadio = document.createElement("input");
-            let label = document.createElement("label");
-            let inputID = createElementID(fralda.name);     
-            let span = document.createElement("span");
-            li.classList.add("radio-button");
-            inputRadio.classList.add("radio-button__input");
-            label.classList.add("radio-button__label");
-            span.classList.add("radio-button__custom");
-            inputRadio.setAttribute("type", "radio");
-            inputRadio.setAttribute("id", inputID);
-            inputRadio.setAttribute("name", category);
-            inputRadio.setAttribute("value", fralda.name);
-            label.setAttribute("for", inputID);
-            label.appendChild(span);
-            label.innerHTML += fralda.name;
+            let inputCheckbox = document.createElement("input");
+            let labelCheck = document.createElement("label");
+            let inputID = createElementID(fralda.name);
+            let labelName = document.createElement("label");
+            
+            li.classList.add("checkbox-container");
+            inputCheckbox.classList.add("hidden-xs-up");
+            labelCheck.classList.add("checkbox");
+            labelName.classList.add("checkbox-label");
+
+            inputCheckbox.setAttribute("type", "checkbox");
+            inputCheckbox.setAttribute("id", inputID);
+            inputCheckbox.setAttribute("name", category);
+            inputCheckbox.setAttribute("value", fralda.name);
+            labelCheck.setAttribute("for", inputID);
+            labelName.setAttribute("for", inputID);
+            labelName.innerHTML += fralda.name;
             
             if(index === 0) {
-              inputRadio.required = true;
+              inputCheckbox.required = true;
             }
             
-            li.appendChild(inputRadio);
-            li.appendChild(label);
+            li.appendChild(inputCheckbox);
+            li.appendChild(labelCheck);
+            li.appendChild(labelName);
             ulFraldas.appendChild(li);
           })
         }
         if (category === "mimo") {
           categories.forEach((mimo) => {
             let li = document.createElement("li");
-            let inputRadio = document.createElement("input");
-            let label = document.createElement("label");
-            let inputID = createElementID(mimo.name); 
-            let span = document.createElement("span");
-            li.classList.add("radio-button");
-            inputRadio.classList.add("radio-button__input");
-            label.classList.add("radio-button__label");
-            span.classList.add("radio-button__custom");
-            inputRadio.setAttribute("type", "radio");
-            inputRadio.setAttribute("id", inputID);
-            inputRadio.setAttribute("name", category);
-            inputRadio.setAttribute("value", mimo.name);
-            label.setAttribute("for", inputID);
-            label.appendChild(span);
-            label.innerHTML += mimo.name;
-            li.appendChild(inputRadio);
-            li.appendChild(label);
+            let inputCheckbox = document.createElement("input");
+            let labelCheck = document.createElement("label");
+            let inputID = createElementID(mimo.name);
+            let labelName = document.createElement("label");
+
+            li.classList.add("checkbox-container");
+            inputCheckbox.classList.add("hidden-xs-up");
+            labelCheck.classList.add("checkbox");
+            labelName.classList.add("checkbox-label");
+
+            inputCheckbox.setAttribute("type", "checkbox");
+            inputCheckbox.setAttribute("id", inputID);
+            inputCheckbox.setAttribute("name", category);
+            inputCheckbox.setAttribute("value", mimo.name);
+            labelCheck.setAttribute("for", inputID);
+            labelName.setAttribute("for", inputID);
+            labelName.innerHTML += mimo.name;
+
+            li.appendChild(inputCheckbox);
+            li.appendChild(labelCheck);
+            li.appendChild(labelName);
             ulMimos.appendChild(li);
           })
         }
