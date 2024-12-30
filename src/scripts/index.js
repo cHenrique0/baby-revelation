@@ -35,9 +35,15 @@ if(inputConvidado.classList.contains("is-invalid")) {
 }
 
 const getItem = (event) => {
-  if (event.target.type === "radio") {
-    invalidMsg.classList.remove("show");
-    invalidMsg.classList.add("hidden");
+  if (event.target.type === "checkbox") {
+    if(etapaAtual === 2) {
+      fraldaInvalidMsg.classList.remove("show");
+      fraldaInvalidMsg.classList.add("hidden");
+    }
+    if(etapaAtual === 3) {
+      mimoInvalidMsg.classList.remove("show");
+      mimoInvalidMsg.classList.add("hidden");
+    }
     if(event.target.name === "fralda") {
       fraldaEscolhida.innerText = event.target.value;
     }
@@ -47,15 +53,30 @@ const getItem = (event) => {
   }
 };
 
-const validarEtapas = (etapaIndex) => {  
-  const etapa = etapas[etapaIndex];
-  const inputsObrigatorios = etapa.querySelectorAll('[required]');
-  
-  for (let input of inputsObrigatorios) {
-    if (!input.checkValidity()) {
-      return { "valid": false, "input": input };
+const validarEtapas = (etapa) => {
+  if (etapa === 1) {
+    if(inputIDConvite.value === "") {
+      return { "valid": false, "input": inputIDConvite };
+    }
+    if(inputConvidado.value === "") {
+      return { "valid": false, "input": inputConvidado };
     }
   }
+  if (etapa === 2) {
+    let checkboxes = [...document.querySelectorAll('input[name="fralda"]')];
+    let checked = checkboxes.some(checkbox => checkbox.checked);
+    if(!checked) {
+      return { "valid": false, "input": checkboxes[0] };
+    }        
+  }
+  if (etapa === 3) {
+    let checkboxes = [...document.querySelectorAll('input[name="mimo"]')];
+    let checked = checkboxes.some(checkbox => checkbox.checked);
+    if(!checked) {
+      return { "valid": false, "input": checkboxes[0] };
+    }  
+  }
+
   return { "valid": true };
 };
 
@@ -86,8 +107,12 @@ const proximaEtapa = async () => {
     isEtapaValida.input.classList.add("is-invalid");
     isEtapaValida.input.parentElement.classList.add("is-invalid");
     if(etapaAtual === 2) {
-      invalidMsg.classList.remove("hidden");
-      invalidMsg.classList.add("show");
+      fraldaInvalidMsg.classList.remove("hidden");
+      fraldaInvalidMsg.classList.add("show");
+    }
+    if(etapaAtual === 3) {
+      mimoInvalidMsg.classList.remove("hidden");
+      mimoInvalidMsg.classList.add("show");
     }
     return;
   };
@@ -96,6 +121,7 @@ const proximaEtapa = async () => {
     loadingEtapa1.classList.remove("hidden");
     loadingEtapa1.classList.add("show");
     const isIdValid = await validarIDConvidado(inputIDConvite.value);
+    const isIdConfirmed = await isGuestConfirmed(inputIDConvite.value);
     loadingEtapa1.classList.remove("show");
     loadingEtapa1.classList.add("hidden");
     if(!isIdValid) {
@@ -104,17 +130,6 @@ const proximaEtapa = async () => {
       inputIDConvite.parentElement.classList.add("is-invalid");
       return;
     }
-
-    labelNomeConvidadoEtapa2.innerText = inputConvidado.value;
-    labelNomeConvidadoEtapa4.innerText = inputConvidado.value;
-  }
-
-  if(etapaAtual === 1) {
-    loadingEtapa1.classList.remove("hidden");
-    loadingEtapa1.classList.add("show");
-    const isIdConfirmed = await isGuestConfirmed(inputIDConvite.value);
-    loadingEtapa1.classList.remove("show");
-    loadingEtapa1.classList.add("hidden");
     if(isIdConfirmed) {
       idInvalidMsg.innerText = `O convidado com ID ${inputIDConvite.value} já confirmou presença.`;
       inputIDConvite.classList.add("is-invalid");

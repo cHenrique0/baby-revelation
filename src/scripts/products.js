@@ -80,10 +80,6 @@ async function fetchData() {
             labelName.setAttribute("for", inputID);
             labelName.innerHTML += fralda.name;
             
-            if(index === 0) {
-              inputCheckbox.required = true;
-            }
-            
             li.appendChild(inputCheckbox);
             li.appendChild(labelCheck);
             li.appendChild(labelName);
