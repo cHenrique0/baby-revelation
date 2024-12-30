@@ -31,6 +31,12 @@ function hideLoading(etapa) {
   }
 }
 
+form.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+      event.preventDefault(); // Impede o comportamento padrão
+  }
+});
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   
