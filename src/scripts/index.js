@@ -231,6 +231,9 @@ const proximaEtapa = async () => {
     maxTwoItems();
   }
 
+  if(etapaAtual === 4) {
+    showItensEscolhidos()
+  }
 }
 
 const etapaAnterior = () => {
@@ -244,5 +247,9 @@ const etapaAnterior = () => {
     let sessaoEtapaAnterior = document.getElementById("etapa" + etapaAtual);
     sessaoEtapaAnterior.classList.remove("hidden");
     sessaoEtapaAnterior.classList.add("show");
+  }
+
+  if(etapaAtual === 2 || etapaAtual === 3) {
+    clearItensEscolhidos();
   }
 }
