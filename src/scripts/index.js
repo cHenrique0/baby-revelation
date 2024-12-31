@@ -1,5 +1,9 @@
 const totalEtapas = 5;
 let etapaAtual = 1;
+const itensEscolhidos = {
+  "fraldas": [],
+  "mimos": []
+};
 
 inputConvidado.value = "";
 inputIDConvite.value = "";
@@ -34,7 +38,7 @@ if(inputConvidado.classList.contains("is-invalid")) {
   }
 }
 
-const getItem = (event) => {
+const hideInvalidMsg = (event) => {
   if (event.target.type === "checkbox") {
     if(etapaAtual === 2) {
       fraldaInvalidMsg.classList.remove("show");
@@ -44,14 +48,31 @@ const getItem = (event) => {
       mimoInvalidMsg.classList.remove("show");
       mimoInvalidMsg.classList.add("hidden");
     }
-    if(event.target.name === "fralda") {
-      fraldaEscolhida.innerText = event.target.value;
-    }
-    if(event.target.name === "mimo") {
-      mimoEscolhido.innerText = event.target.value;
-    }
   }
 };
+
+ulFraldas.addEventListener("change", hideInvalidMsg);
+
+ulMimos.addEventListener("change", hideInvalidMsg);
+
+const clearItensEscolhidos = () => {
+  fraldasEscolhida.innerHTML = "";
+  mimosEscolhido.innerHTML = "";
+}
+
+const showItensEscolhidos = () => {  
+  itensEscolhidos.fraldas.forEach(fralda => {
+    let p = document.createElement("p");
+    p.textContent = fralda;
+    fraldasEscolhida.appendChild(p);
+  });
+
+  itensEscolhidos.mimos.forEach(mimo => {
+    let p = document.createElement("p");
+    p.textContent = mimo;
+    mimosEscolhido.appendChild(p);
+  });
+}
 
 const validarEtapas = (etapa) => {
   if (etapa === 1) {
@@ -112,16 +133,26 @@ const maxTwoItems = () => {
 
   checkboxes.forEach(checkbox => {
     checkbox.addEventListener('change', () => {
+      let checked = undefined;
       let checkedCount = 0;
+      let selecionados = [];
+      
       if(etapaAtual === 2) {
-        checkedCount = document.querySelectorAll('input[name="fralda"]:checked').length;
+        checked = document.querySelectorAll('input[name="fralda"]:checked');
+        checkedCount = checked.length;
+        selecionados = Array.from(checked).map(checkbox => checkbox.value);
       }
       if(etapaAtual === 3) {
-        checkedCount = document.querySelectorAll('input[name="mimo"]:checked').length;
+        checked = document.querySelectorAll('input[name="mimo"]:checked');
+        checkedCount = checked.length;
+        selecionados = Array.from(checked).map(checkbox => checkbox.value);
       }
 
+      itensEscolhidos[etapaAtual === 2 ? "fraldas" : "mimos"] = selecionados;
+
       checkboxes.forEach(box => {
-        if (checkedCount >= 2 && !box.checked) {
+        // Desabilitar os itens não selecionados
+        if (checkedCount === 2 && !box.checked) {
           box.disabled = true;
           box.classList.add("disabled");
           box.labels[1].classList.add("disabled");
@@ -196,7 +227,9 @@ const proximaEtapa = async () => {
     sessaoProximaEtapa.classList.add("show");
   }
 
-  maxTwoItems();
+  if(etapaAtual === 2 || etapaAtual === 3) {
+    maxTwoItems();
+  }
 
 }
 

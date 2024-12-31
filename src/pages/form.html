@@ -68,7 +68,7 @@
         <p>Olá, <span id="label-nome-convidado-etapa-2"></span>! É hora de escolher o tamanho das fraldas</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="lista-container">
-          <ul class="lista" id="listaFraldas" onchange="getItem(event)"></ul>
+          <ul class="lista" id="listaFraldas"></ul>
           <div id="fralda-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de fraldas.</div>
         </div>
         <div class="buttons">
@@ -90,7 +90,7 @@
         <p>Se você deseja nos presenter com um mimo, escolha abaixo. O mimo é opcional.</p>
         <p>Algum texto explicativo(ou tooltip)</p>
         <div class="lista-container">
-          <ul class="lista" id="listaMimos" onchange="getItem(event)"></ul>
+          <ul class="lista" id="listaMimos"></ul>
           <div id="mimo-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de mimo.</div>
         </div>
         <div class="buttons">
@@ -108,8 +108,8 @@
         <div>
           <h4>Etapa 4</h4>
           <p><span id="label-nome-convidado-etapa-4"></span>, você escolheu os presente abaixo:</p>
-          <p id="fraldaEscolhida"></p>
-          <p id="mimoEscolhido"></p>
+          <div id="fraldasEscolhida"></div>
+          <div id="mimosEscolhido"></div>
           <p>Deseja confirmar os presentes selecionados?</p>
         </div>
         <div class="buttons">
