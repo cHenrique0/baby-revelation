@@ -13,117 +13,119 @@
   <title>Confirmar Presença</title>
 </head>
 <body class="body">
-  <div class="mainBackground">
-    <section id="etapa5" class="etapa hidden">
-      <h4>Etapa 5</h4>
-      <p>Mensagem de agradecimento</p>
-      <div class="buttons">
-        <a href="../../index.html" id="goToHome" type="button" class="button">
-          <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-          <!-- <span class="label">Voltar para o início</span> -->
-          Voltar para o início
-        </a>
-      </div>
-    </section>
-    <form class="form" id="confirm-form" method="POST" action="">
-      <section id="etapa1" class="etapa show">
-        <h4>Informações do convidado</h4>
-        <p>Digite as informações do convidado</p>
-        <p>Algum texto explicativo(ou tooltip)</p>
-        <div class="input-group has-validation">
-          <div class="form-floating" id="id-convite-container">
-            <input type="number" class="form-control input" name="idConvite" id="idConvite" placeholder="Digite o número do convite" required>
-            <label for="idConvite">Digite o número do convite</label>
-          </div>
-          <div class="invalid-feedback" id="id-invalid-msg"></div>
-        </div>
-        <div class="input-group has-validation">
-          <div class="form-floating" id="nome-convidado-container">
-            <input type="text" class="form-control input" name="nomeConvidado" id="nomeConvidado" placeholder="Quem vai?" required>
-            <label for="nomeConvidado">Digite o nome do convidado</label>
-          </div>
-          <div class="invalid-feedback">Por favor, digite o nome do convidado.</div>
-        </div>
+  <div class="secondary-background" id="background">
+    <div class="borda girl-bear-bg" id="borda">
+      <section id="etapa5" class="etapa hidden">
+        <h4>Etapa 5</h4>
+        <p>Mensagem de agradecimento</p>
         <div class="buttons">
-          <a href="../../index.html" id="previous" type="button" class="button" onclick="etapaAnterior()">
+          <a href="../../index.html" id="goToHome" type="button" class="button">
             <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <!-- <span class="label">Voltar</span> -->
-             Voltar
+            <!-- <span class="label">Voltar para o início</span> -->
+            Voltar para o início
           </a>
-          <button id="next" type="button" class="button" onclick="proximaEtapa()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <!-- <span class="label">Próximo</span> -->
-             Próximo
-          </button>
-        </div>
-        <div class="loading-container hidden" id="loadingEtapa1">
-          <div class="pulse"></div>
         </div>
       </section>
-      <section id="etapa2" class="etapa hidden">
-        <h4>Fraldas</h4>
-        <p>Olá, <span id="label-nome-convidado-etapa-2"></span>! É hora de escolher o tamanho das fraldas</p>
-        <p>Algum texto explicativo(ou tooltip)</p>
-        <div class="lista-container">
-          <ul class="lista" id="listaFraldas"></ul>
-          <div id="fralda-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de fraldas.</div>
-        </div>
-        <div class="buttons">
-          <button id="previous" type="button" class="button" onclick="etapaAnterior()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Voltar</span>
-          </button>
-          <button id="next" type="button" class="button" onclick="proximaEtapa()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Próximo</span>
-          </button>
-        </div>
-        <div class="loading-container hidden" id="loadingEtapa2">
-          <div class="pulse"></div>
-        </div>
-      </section>
-      <section id="etapa3" class="etapa hidden">
-        <h4>Mimos</h4>
-        <p>Se você deseja nos presenter com um mimo, escolha abaixo. O mimo é opcional.</p>
-        <p>Algum texto explicativo(ou tooltip)</p>
-        <div class="lista-container">
-          <ul class="lista" id="listaMimos"></ul>
-          <div id="mimo-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de mimo.</div>
-        </div>
-        <div class="buttons">
-          <button id="previous" type="button" class="button" onclick="etapaAnterior()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Voltar</span>
-          </button>
-          <button id="next" type="button" class="button" onclick="proximaEtapa()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Próximo</span>
-          </button>
-        </div>
-      </section>
-      <section id="etapa4" class="etapa hidden">
-        <div>
-          <h4>Etapa 4</h4>
-          <p><span id="label-nome-convidado-etapa-4"></span>, você escolheu os presente abaixo:</p>
-          <div id="fraldasEscolhida"></div>
-          <div id="mimosEscolhido"></div>
-          <p>Deseja confirmar os presentes selecionados?</p>
-        </div>
-        <div class="buttons">
-          <button id="previous" type="button" class="button" onclick="etapaAnterior()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Voltar</span>
-          </button>
-          <button id="submit" type="submit" class="button" onclick="proximaEtapa()">
-            <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
-            <span class="label">Confirmar</span>
-          </button>
-        </div>
-        <div class="loading-container hidden" id="loadingEtapa4">
-          <div class="pulse"></div>
-        </div>
-      </section>
-    </form>
+      <form class="form" id="confirm-form" method="POST" action="">
+        <section id="etapa1" class="etapa show">
+          <h4>Informações do convidado</h4>
+          <p>Digite as informações do convidado</p>
+          <p>Algum texto explicativo(ou tooltip)</p>
+          <div class="input-group has-validation">
+            <div class="form-floating" id="id-convite-container">
+              <input type="number" class="form-control input" name="idConvite" id="idConvite" placeholder="Digite o número do convite" required>
+              <label for="idConvite">Digite o número do convite</label>
+            </div>
+            <div class="invalid-feedback" id="id-invalid-msg"></div>
+          </div>
+          <div class="input-group has-validation">
+            <div class="form-floating" id="nome-convidado-container">
+              <input type="text" class="form-control input" name="nomeConvidado" id="nomeConvidado" placeholder="Quem vai?" required>
+              <label for="nomeConvidado">Digite o nome do convidado</label>
+            </div>
+            <div class="invalid-feedback">Por favor, digite o nome do convidado.</div>
+          </div>
+          <div class="buttons">
+            <a href="../../index.html" id="previous" type="button" class="button" onclick="etapaAnterior()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <!-- <span class="label">Voltar</span> -->
+               Voltar
+            </a>
+            <button id="next" type="button" class="button" onclick="proximaEtapa()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <!-- <span class="label">Próximo</span> -->
+               Próximo
+            </button>
+          </div>
+          <div class="loading-container hidden" id="loadingEtapa1">
+            <div class="pulse"></div>
+          </div>
+        </section>
+        <section id="etapa2" class="etapa hidden">
+          <h4>Fraldas</h4>
+          <p>Olá, <span id="label-nome-convidado-etapa-2"></span>! É hora de escolher o tamanho das fraldas</p>
+          <p>Algum texto explicativo(ou tooltip)</p>
+          <div class="lista-container">
+            <ul class="lista" id="listaFraldas"></ul>
+            <div id="fralda-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de fraldas.</div>
+          </div>
+          <div class="buttons">
+            <button id="previous" type="button" class="button" onclick="etapaAnterior()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Voltar</span>
+            </button>
+            <button id="next" type="button" class="button" onclick="proximaEtapa()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Próximo</span>
+            </button>
+          </div>
+          <div class="loading-container hidden" id="loadingEtapa2">
+            <div class="pulse"></div>
+          </div>
+        </section>
+        <section id="etapa3" class="etapa hidden">
+          <h4>Mimos</h4>
+          <p>Se você deseja nos presenter com um mimo, escolha abaixo. O mimo é opcional.</p>
+          <p>Algum texto explicativo(ou tooltip)</p>
+          <div class="lista-container">
+            <ul class="lista" id="listaMimos"></ul>
+            <div id="mimo-invalid-msg" class="invalid hidden">Por favor, escolha uma opção de mimo.</div>
+          </div>
+          <div class="buttons">
+            <button id="previous" type="button" class="button" onclick="etapaAnterior()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Voltar</span>
+            </button>
+            <button id="next" type="button" class="button" onclick="proximaEtapa()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Próximo</span>
+            </button>
+          </div>
+        </section>
+        <section id="etapa4" class="etapa hidden">
+          <div>
+            <h4>Etapa 4</h4>
+            <p><span id="label-nome-convidado-etapa-4"></span>, você escolheu os presente abaixo:</p>
+            <div id="fraldasEscolhida"></div>
+            <div id="mimosEscolhido"></div>
+            <p>Deseja confirmar os presentes selecionados?</p>
+          </div>
+          <div class="buttons">
+            <button id="previous" type="button" class="button" onclick="etapaAnterior()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Voltar</span>
+            </button>
+            <button id="submit" type="submit" class="button" onclick="proximaEtapa()">
+              <!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" height="24" fill="none" class="svg-icon"><g stroke-width="2" stroke-linecap="round" stroke="#fff" fill-rule="evenodd" clip-rule="evenodd"><path d="m4 9c0-1.10457.89543-2 2-2h2l.44721-.89443c.33879-.67757 1.03131-1.10557 1.78889-1.10557h3.5278c.7576 0 1.4501.428 1.7889 1.10557l.4472.89443h2c1.1046 0 2 .89543 2 2v8c0 1.1046-.8954 2-2 2h-12c-1.10457 0-2-.8954-2-2z"></path><path d="m15 13c0 1.6569-1.3431 3-3 3s-3-1.3431-3-3 1.3431-3 3-3 3 1.3431 3 3z"></path></g></svg> -->
+              <span class="label">Confirmar</span>
+            </button>
+          </div>
+          <div class="loading-container hidden" id="loadingEtapa4">
+            <div class="pulse"></div>
+          </div>
+        </section>
+      </form>
+    </div>
   </div>
 </body>
 </html>

@@ -165,6 +165,30 @@ const maxTwoItems = () => {
   });
 }
 
+const changeBackgroundImage = () => {
+  
+  if(etapaAtual === 1 || etapaAtual === 3) {
+    borda.classList.remove("boy-bear-bg");
+    borda.classList.add("girl-bear-bg");
+    borda.classList.remove("boy-girl-bear-bg");
+  }
+  if(etapaAtual === 2) {
+    borda.classList.remove("girl-bear-bg");
+    borda.classList.add("boy-bear-bg");
+  }
+  if(etapaAtual === 4) {
+    borda.classList.remove("boy-bear-bg");
+    borda.classList.add("boy-girl-bear-bg");
+  }
+  if(etapaAtual === 5) {
+    borda.classList.remove("boy-girl-bear-bg");
+    borda.classList.remove("girl-bear-bg");
+    borda.classList.remove("boy-bear-bg");
+    background.classList.remove("secondary-background");
+    background.classList.add("main-background");
+  }
+}
+
 const proximaEtapa = async () => {
 
   const isEtapaValida = validarEtapas(etapaAtual);  
@@ -234,6 +258,8 @@ const proximaEtapa = async () => {
   if(etapaAtual === 4) {
     showItensEscolhidos()
   }
+
+  changeBackgroundImage();
 }
 
 const etapaAnterior = () => {
@@ -252,4 +278,6 @@ const etapaAnterior = () => {
   if(etapaAtual === 2 || etapaAtual === 3) {
     clearItensEscolhidos();
   }
+
+  changeBackgroundImage();
 }

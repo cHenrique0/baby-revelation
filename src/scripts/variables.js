@@ -21,6 +21,8 @@ const mimoInvalidMsg = document.getElementById("mimo-invalid-msg");
 const idInvalidMsg = document.getElementById("id-invalid-msg");
 const labelNomeConvidadoEtapa2 = document.getElementById("label-nome-convidado-etapa-2");
 const labelNomeConvidadoEtapa4 = document.getElementById("label-nome-convidado-etapa-4");
+const borda = document.getElementById("borda");
+const background = document.getElementById("background");
 
 const form = document.forms["confirm-form"];
 const baseUrl = "https://script.google.com/macros/s/AKfycbwcZP0S7VFEj81XYqhcK5uzbhD4BVbtYz8jpO-PiRMMGxBjE4MU_863qNZ9J6zeKZM3SQ/exec";
