@@ -1,7 +1,15 @@
+@import url(fonts.css);
+@import url(colors.css);
+@import url(checkbox.css);
+@import url(form.css);
+@import url(loading.css);
+
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--bege-escuro);
 }
 
 .hidden {
@@ -13,49 +21,148 @@
 }
 
 .body {
+  margin: 0;
   background-color: #EADDCA;
 }
 
 .mainBackground {
-  min-height: 100vh;
-  min-height: 100dvh;
   max-width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 3em 2em 2em 2.1em;
-  margin: 0.8em;
-  border: 4px dashed #DAA06D;
-  border-radius: 15px;
-  background-color: #EADDCA;
-  /* box-shadow: 0 0 0 4px #EADDCA, 2px 2px 4px 2px rgba(0, 0, 0, 0.5); */
+  min-height: 100vh;
+  background-image: url("../img/background.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
   transition: .4s ease-in-out;
 }
 
-.mainBackground .heading {
-  color: #DAA06D;
-  background-color: transparent;
-  letter-spacing: .5em;
+.borda {
+  max-width: 100vw;
+  min-height: 100vh;
+  padding: 2em;
+  margin: 0.8em;
+  border: 2.5px dashed var(--bege-medio);
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: center;
-  padding-top: 1em;
-  padding-bottom: 3em;
-  text-shadow: inset -1px -1px 1px #DAA06D;
+  flex-grow: 1;
+}
+
+.title-container {
+  flex-grow: 1;
+}
+
+.title-container h2 {
+  color: var(--verde-cha);
+  font-family: Questrial;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.baby-name-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.baby-name-container p {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.baby-name-container span:nth-child(3) {
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.baby-name {
+  font-family: "Great Vibes", serif;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.name-for-boy {
+  color: var(--verde-cha);
+}
+
+.name-for-girl {
+  color: var(--lilas-medio);
+}
+
+.main-content {
+  display: flex;
+  flex-grow: 0.5;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.date-time {
+  display: flex;
+  flex-direction: column;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+}
+
+.location span{
+  color: var(--verde-cha);
 }
 
 .button {
+  width: 200px;
+  font-size: 16px;
   border-radius: 10px;
   outline: none;
   border: none;
-  color: white;
-  background-color: #E5AA70;
   font-weight: bold;
   letter-spacing: 0.1em;
   transition: .4s ease-in-out opacity,.1s ease-in-out active;
   padding: 1em;
-  box-shadow: 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.5);
   text-decoration: none;
   text-align: center;
   cursor: pointer;
+}
+
+.main-btn {
+  color: var(--verde-medio);
+  background-color: var(--verde-claro);
+  box-shadow: 0.5px 0.5px 0.5px 0.5px var(--verde-medio);
+}
+
+.secondary-btn {
+  color: var(--lilas-escuro);
+  background-color: var(--lilas-claro);
+  box-shadow: 0.5px 0.5px 0.5px 0.5px var(--lilas-escuro);
 }
 
 .button:nth-child(2) {
@@ -74,37 +181,5 @@
 #etapa0 {
   display: flex;
   flex-direction: column;
-}
-
-.infos {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: relative;
-  color: #DAA06D;
-  font-weight: 800;
-  margin-bottom: 1em;
-  background-color: transparent;
-  letter-spacing: 0.30em;
-  line-height: 1.5em;
-  text-shadow: inset -1px -1px 1px #DAA06D;
-}
-
-.infos span {
-  flex: 1;
-  text-align: center;
-  align-content: center;
-  position: relative;
-  border: none;
-  height: 50px;
-  padding: 0 10px 0 10px;
-}
-
-.infos span:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  border-right: 2px solid #DAA06D;
-  height: 100%;
-  top: 0;
-  right: 0;
 }
