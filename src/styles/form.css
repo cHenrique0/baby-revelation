@@ -1,6 +1,7 @@
 .girl-bear-bg {
   margin: 0;
   height: 100vh;
+  height: 100svh;
   background-image: url("../img/girl_bear_bg.png");
   background-size: auto;
   background-repeat: no-repeat;
@@ -10,6 +11,7 @@
 .boy-bear-bg {
   margin: 0;
   height: 100vh;
+  height: 100svh;
   background-image: url("../img/boy_bear_bg.png");
   background-size: auto;
   background-repeat: no-repeat;
@@ -19,6 +21,7 @@
 .boy-girl-bear-bg {
   margin: 0;
   height: 100vh;
+  height: 100svh;
   background-image: url("../img/girl_bear_bg.png"), url("../img/boy_bear_bg.png");
   background-repeat: no-repeat, no-repeat;
   background-position: bottom left, top right;

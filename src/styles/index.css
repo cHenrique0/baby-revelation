@@ -13,7 +13,7 @@
 }
 
 html, body {
-  height: 100%;
+  height: 100svh;
   background-color: #EADDCA;
 }
 
@@ -37,6 +37,7 @@ html, body {
 .secondary-background {
   max-width: 100vw;
   min-height: 100vh;
+  min-height: 100svh;
   background-color: var(--bege-claro);
   transition: .4s ease-in-out;
 }
@@ -44,6 +45,7 @@ html, body {
 .borda {
   max-width: 100vw;
   min-height: 100vh;
+  min-height: 100svh;
   padding: 2em;
   margin: 0.8em;
   border: 2.5px dashed var(--bege-medio);
@@ -145,7 +147,7 @@ html, body {
 }
 
 .button {
-  width: 200px;
+  width: 250px;
   font-size: 16px;
   border-radius: 10px;
   outline: none;
