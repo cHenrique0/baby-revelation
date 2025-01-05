@@ -18,75 +18,139 @@
 
 .boy-girl-bear-bg {
   margin: 0;
-    height: 100vh;
-    background-image: url("../img/girl_bear_bg.png"), url("../img/boy_bear_bg.png");
-    background-repeat: no-repeat, no-repeat;
-    background-position: bottom left, top right;
-    background-size: auto, auto;
+  height: 100vh;
+  background-image: url("../img/girl_bear_bg.png"), url("../img/boy_bear_bg.png");
+  background-repeat: no-repeat, no-repeat;
+  background-position: bottom left, top right;
+  background-size: auto, auto;
 }
 
 .form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .etapa {
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  gap: 20px;
-}
-
-.etapa .buttons {
+  flex: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
-  gap: 1rem;
+  align-items: center;
+  text-align: center;
 }
 
-.buttons .button {
-  margin: 0;
+.step-texts {
+  flex-grow: 0;
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  height: 100%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem 1rem;
-  text-decoration: none;
-  background-color: #DAA06D;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  justify-content: space-between;
+  padding-top: 2rem;
+  gap: 5rem;
+}
+
+#etapa2 .step-texts,
+#etapa3 .step-texts,
+#etapa4 .step-texts,
+#etapa5 .step-texts {
+  gap: 2rem;
+}
+
+#etapa4 .step-texts {
+  padding-top: 11rem;
+}
+
+#etapa5 .step-texts {
+  padding-top: 16rem;
+}
+
+.step-texts p {
+  color: var(--bege-escuro);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.step-texts span {
+  color: var(--bege-escuro);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.step-title {
+  color: var(--verde-cha);
+  font-family: "Questrial", serif;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.step-inputs-buttons {
+  flex-grow: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+#etapa2 .step-inputs-buttons {
+  gap: 0;
+}
+
+.step-inputs {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2rem;
+  gap: 2rem;
 }
 
 .form-floating .input {
   outline: none;
   padding: 0.5em;
-  border: 1px solid #DAA06D;
-  color: #b87337;
-  font-weight: 600;
+  border: 1px solid var(--bege-medio);
+  color: var(--bege-escuro);
+  font-weight: 700;
   border-radius: 10px;
-  background-color: #EADDCA;
+  background-color: var(--bege-claro);
 }
 
 .form-floating input:focus {
   outline: none;
-  color: #b87337;
-  border-color: #b87337;
-  background-color: #EADDCA;
+  color: var(--bege-escuro);
+  border-color: var(--bege-escuro);
+  background-color: var(--bege-claro);
   box-shadow: none;
 }
 
 .form-floating label {
-  color: #b87337;
+  color: var(--bege-escuro);
 }
 
 .form-floating label::after {
-  background-color: #EADDCA !important;
+  background-color: var(--bege-claro) !important;
 }
 
 .form-floating input:focus + label,
 .form-floating input:not(:placeholder-shown) + label {
   font-size: 12px;
-  color: #b87337 !important;
+  color: var(--bege-escuro) !important;
+}
+
+.step-buttons {
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+}
+
+#etapa5 .step-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
 }
 
 .invalid-feedback {
@@ -94,12 +158,13 @@
 }
 
 .invalid {
-  color: #dc3545;
+  color: var(--invalid-msg);
   font-size: 14px;
 }
 
 .lista-container {
   width: 100%;
+  padding: 2rem 1rem 1rem 1rem;
 }
 
 .lista {
@@ -107,6 +172,51 @@
   flex-direction: column;
   align-items: flex-start;
   list-style: none;
-  gap: 10px;
+  gap: 20px;
   padding: 0;
+}
+
+.chosen-items-list {
+  padding: 1rem;
+  padding-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.chosen-item {
+  position: relative;
+  color: var(--preto);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  display: inline-block;
+  padding-left: 30px;
+}
+
+.chosen-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: var(--verde-claro);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.chosen-item::after {
+  content: "";
+  position: absolute;
+  top: 1.5px;
+  left: 7px;
+  transform: rotate(45deg);
+  width: 6px;
+  height: 12px;
+  border-right: 2px solid var(--branco);
+  border-bottom: 2px solid var(--branco);
 }

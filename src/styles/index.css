@@ -10,6 +10,7 @@
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
   color: var(--bege-escuro);
+  box-sizing: border-box;
 }
 
 .hidden {
@@ -52,6 +53,7 @@
   border-radius: 15px;
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
 }
 
 .heading {
@@ -160,7 +162,7 @@
   cursor: pointer;
 }
 
-.main-btn {
+.primary-btn {
   color: var(--verde-medio);
   background-color: var(--verde-claro);
   box-shadow: 0.5px 0.5px 0.5px 0.5px var(--verde-medio);
@@ -173,7 +175,7 @@
 }
 
 .button:nth-child(2) {
-  margin-top: 0.75em;
+  /* margin-top: 0.75em; */
 }
 
 .button:hover {
@@ -189,4 +191,5 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 1rem;
 }
