@@ -13,6 +13,7 @@
 }
 
 html, body {
+  height: 100vh;
   height: 100svh;
   background-color: #EADDCA;
 }
@@ -171,10 +172,6 @@ html, body {
   color: var(--lilas-escuro);
   background-color: var(--lilas-claro);
   box-shadow: 0.5px 0.5px 0.5px 0.5px var(--lilas-escuro);
-}
-
-.button:nth-child(2) {
-  /* margin-top: 0.75em; */
 }
 
 .button:hover {
