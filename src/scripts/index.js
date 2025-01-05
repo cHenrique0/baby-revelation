@@ -62,15 +62,17 @@ const clearItensEscolhidos = () => {
 
 const showItensEscolhidos = () => {  
   itensEscolhidos.fraldas.forEach(fralda => {
-    let p = document.createElement("p");
-    p.textContent = fralda;
-    fraldasEscolhida.appendChild(p);
+    let span = document.createElement("span");
+    span.classList.add("chosen-item");
+    span.textContent = fralda;
+    fraldasEscolhida.appendChild(span);
   });
 
   itensEscolhidos.mimos.forEach(mimo => {
-    let p = document.createElement("p");
-    p.textContent = mimo;
-    mimosEscolhido.appendChild(p);
+    let span = document.createElement("span");
+    span.classList.add("chosen-item");
+    span.textContent = mimo;
+    mimosEscolhido.appendChild(span);
   });
 }
 
