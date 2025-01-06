@@ -93,11 +93,11 @@ const validarEtapas = (etapa) => {
     }
   }
   if (etapa === 3) {
-    let checkboxes = [...document.querySelectorAll('input[name="mimo"]')];
+    /* let checkboxes = [...document.querySelectorAll('input[name="mimo"]')];
     let checked = checkboxes.some(checkbox => checkbox.checked);
     if(!checked) {
       return { "valid": false, "input": checkboxes[0] };
-    }
+    } */
   }
 
   return { "valid": true };
