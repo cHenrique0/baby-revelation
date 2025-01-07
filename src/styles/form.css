@@ -65,6 +65,10 @@
   padding-top: 16rem;
 }
 
+#etapa3 p {
+  font-size: 12px;
+}
+
 .step-texts p {
   color: var(--bege-escuro);
   font-size: 16px;
